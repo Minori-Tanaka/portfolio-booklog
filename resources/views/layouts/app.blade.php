@@ -7,20 +7,23 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    {{-- FA --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="bg-white h-100">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand pe-5" href="{{ url('/') }}" style="font-size: 1.5em">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -29,8 +32,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+                    <ul class="navbar-nav ms-auto">
+                        @auth
+                            <div class="input-group">
+                                <select name="genre" id="genre" class="form-control rounded-pill shadow-sm border-0 me-1 bg-white">
+                                    <option value="">Genre</option>
+                                </select>
+                                <form action="#" method="post" role="search">
+                                    @csrf
+                                    <input type="text" name="search" class="form-control rounded-pill shadow-sm border-0 bg-white" placeholder="Search" style="width: 300px">
+                                </form>
+                                <button type="submit" class="btn">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -58,7 +74,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                       <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -72,9 +88,41 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                @auth
+                    <div class="col-2 me-4 sidebar">
+                        <ul class="nav nav-pills flex-column bg-light mt-5">
+                            <li class="nav-item">
+                                <a href="{{route('home')}}" class="nav-link {{ url()->current() === url('/') ? 'active bg-secondary' : 'text-dark'}}" aria-current="{{ url()->current() === url('/') ? 'page' : ''}}">
+                                    <i class="fa-solid fa-house me-2"></i> Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('book.index')}}" class="nav-link {{ url()->current() === url('/book') ? 'active bg-secondary' : 'text-dark'}}" aria-current="{{ url()->current() === url('/book') ? 'page' : ''}}">
+                                    <i class="fa-solid fa-book me-2"></i> Book List
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link {{ url()->current() === url('/profile') ? 'active bg-secondary' : 'text-dark'}}" aria-current="{{ url()->current() === url('/profile') ? 'page' : ''}}">
+                                    <i class="fa-regular fa-user me-2"></i> My Page
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                @endauth
+                
+                <div class="col-9">
+                    <main class="py-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>  
+        </div>             
     </div>
 </body>
 </html>

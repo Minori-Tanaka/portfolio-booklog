@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $book;
+
+    public function __construct(Book $book)
     {
-        $this->middleware('auth');
+        $this->book = $book;
     }
 
     /**
@@ -23,6 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $allBooks = $this->book->all();
+        return view('home')->with('allBooks', $allBooks);
     }
 }

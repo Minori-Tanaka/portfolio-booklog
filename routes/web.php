@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    // BOOK
+    Route::get('/book', [BookController::class, 'index'])->name('book.index');
+    Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
+});

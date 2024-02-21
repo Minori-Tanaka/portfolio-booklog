@@ -1,0 +1,106 @@
+@extends('layouts.app')
+
+@section('title', 'Add Book')
+
+@section('content')
+    <div class="card p-5">
+        <div class="row justify-content-start">
+            <div class="col-lg-8">
+                <div class="card shadow rounded">
+                    <div class="card-header">
+                        <h2 class="h3 text-center my-auto">Add new Book</h2>
+                    </div>
+                    <div class="card-body bg-white rounded-bottom">
+                        <table class="table">
+                            <form action="#" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <tr>
+                                    <th class="align-middle">
+                                        <label for="title" class="form-label mb-0">Title</label>
+                                    </th>
+                                    <td class="bg-white">
+                                        <input type="text" class="form-control bg-white" name="title" id="title" value="{{old('title')}}" autofocus>
+                                        @error('title')
+                                            <p class="text-danger small">{{$message}}</p>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="align-middle">
+                                        <label for="author" class="form-label mb-0">Author</label>
+                                    </th>
+                                    <td class="bg-white">
+                                        <input type="number" maxlength="4" class="form-control bg-white" name="author" id="author" value="{{old('author')}}">
+                                        @error('author')
+                                            <p class="text-danger small">{{$message}}</p>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="align-middle">
+                                        <label for="published_year" class="form-label mb-0">Published Year</label>
+                                    </th>
+                                    <td class="bg-white">
+                                        <input type="text" maxlength="4" class="form-control bg-white" name="published_year" id="published_year" value="{{old('published_year')}}" placeholder="YYYY">
+                                        @error('published_year')
+                                            <p class="text-danger small">{{$message}}</p>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="align-middle">
+                                        <label for="cover_photo" class="form-label mb-0">Cover Photo</label>
+                                    </th>
+                                    <td class="bg-white">
+                                        <input type="file" class="form-control bg-white" name="cover_photo" id="cover_photo" value="{{old('cover_photo')}}" aria-describedby="cover-info">
+                                        <div class="form-text" id="cover-info">
+                                            Acceptable formats: jpeg, jpg, png, gif only <br>
+                                            Maximum file size: 1048kb
+                                        </div>
+                                        @error('cover_photo')
+                                            <p class="text-danger small">{{$message}}</p>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="align-middle">
+                                        <label for="genre" class="form-label mb-0">Genre</label>
+                                    </th>
+                                    <td class="bg-white">
+                                        <select class="form-select bg-white" name="genre" id="genre">
+                                            <option selected>Select Genre</option>
+                                            @foreach ($allGenres as $genre)
+                                                <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('genre')
+                                            <p class="text-danger small">{{$message}}</p>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="align-middle">
+                                        <label for="summary" class="form-label mb-0">Summary</label>
+                                    </th>
+                                    <td class="bg-white">
+                                        <textarea name="summary" id="summary" rows="5" class="form-control bg-white">{{old('summary')}}</textarea>
+                                        @error('summary')
+                                            <p class="text-danger small">{{$message}}</p>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="bg-white text-center">
+                                        <button type="submit" class="btn btn-dark w-50 my-3">
+                                            <i class="fa-solid fa-circle-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                            </form>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

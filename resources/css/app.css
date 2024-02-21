@@ -1,0 +1,12 @@
+html, body {
+    height: 100%;
+}
+
+.card {
+    background-color: #f0f0f0;
+    border: 0;
+}
+
+.sidebar {
+    background-color: #fafafa;
+}
