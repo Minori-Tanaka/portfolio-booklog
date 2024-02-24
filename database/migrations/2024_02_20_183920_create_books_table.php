@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string('title', 50);
             $table->string('author', 50);
             $table->integer('published_year');
-            $table->string('cover_photo')->nullable();
+            $table->longText('cover_photo')->nullable();
             $table->unsignedBigInteger('genre_id');
-            $table->text('summary');
+            $table->text('description');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('genre_id')->references('id')->on('genres');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

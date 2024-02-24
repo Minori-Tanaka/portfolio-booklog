@@ -10,3 +10,11 @@ html, body {
 .sidebar {
     background-color: #fafafa;
 }
+
+p {
+    white-space: pre-wrap;
+  }
+
+.btn-font {
+    font-size: 2em;
+}

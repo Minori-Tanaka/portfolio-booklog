@@ -18,10 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::group(['middleware' => 'auth'], function() {
     // BOOK
     Route::get('/book', [BookController::class, 'index'])->name('book.index');
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
+    Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
+    Route::get('/book/{id}/show', [BookController::class, 'show'])->name('book.show');
+    Route::get('/book/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
+    Route::patch('/book/{id}/update', [BookController::class, 'update'])->name('book.update');
 });
