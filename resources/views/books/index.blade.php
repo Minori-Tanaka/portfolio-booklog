@@ -2,8 +2,12 @@
 
 @section('title', 'Book List')
 
+@section('sidebar')
+    @include('books.sidebar')
+@endsection
+
 @section('content')
-    <a href="{{route('book.create')}}" class="btn text-start btn-font" title="Add book" style="font-size: 2em">
+    <a href="{{route('book.create')}}" class="btn text-start btn-font py-0" title="Add book">
         <i class="fa-solid fa-circle-plus"></i>
     </a>
     <div class="card p-5">
@@ -12,9 +16,13 @@
                 @foreach ($allBooks as $book)
                     <div class="col-lg-2">
                         <div class="card bg-transparent">
-                            <a href="{{route('book.show', $book->id)}}">
-                                {{-- TODO? : bookmark -> badge --}}
+                            <a href="{{route('book.show', $book->id)}}" class="position-relative">
                                 <img src="{{$book->cover_photo}}" alt="{{$book->title}}" class="card-image-top shadow w-100">
+                                @if ($book->isBookmarked())
+                                    <span class="position-absolute top-0 end-0 p-0 badge text-warning" style="font-size: 1.8em">
+                                        <i class="fa-solid fa-bookmark"></i>
+                                    </span>
+                                @endif
                             </a>
                             <div class="card-body ps-0 pt-2">
                                 <a href="{{'book.show', $book->id}}" class="text-decoration-none text-dark">

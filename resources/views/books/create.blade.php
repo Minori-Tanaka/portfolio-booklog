@@ -2,15 +2,27 @@
 
 @section('title', 'Add Book')
 
+@section('sidebar')
+    @include('books.sidebar')
+@endsection
+
 @section('content')
     <div class="card p-5">
         <div class="row justify-content-start">
             <div class="col-lg-8">
                 <div class="card shadow rounded">
                     <div class="card-header">
-                        <h2 class="h3 text-center my-auto">
-                            <i class="fa-solid fa-circle-plus me-1"></i> Add new Book
-                        </h2>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col">
+                                <h2 class="h3 text-center">Add new Book</h2>
+                            </div>
+                            <div class="col-2 text-end">
+                                <a href="{{route('book.index')}}" class="btn">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body bg-white rounded-bottom">
                         <table class="table">

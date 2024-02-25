@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MypageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +30,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/book/{id}/show', [BookController::class, 'show'])->name('book.show');
     Route::get('/book/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
     Route::patch('/book/{id}/update', [BookController::class, 'update'])->name('book.update');
+
+    // MY PAGE
+    Route::get('mypage/{id}/index', [MypageController::class, 'index'])->name('mypage.index');
+        // BOOKMARK
+        Route::post('bookmark/{book_id}/store', [BookmarkController::class, 'store'])->name('bookmark.store');
+        Route::get('bookmark/index', [BookmarkController::class, 'index'])->name('bookmark.index');
 });

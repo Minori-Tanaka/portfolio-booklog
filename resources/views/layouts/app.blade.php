@@ -34,6 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         @auth
+                            {{-- TODO : Search (bootstrap > input group) --}}
                             <div class="input-group">
                                 <select name="genre" id="genre" class="form-control rounded-pill shadow-sm border-0 me-1 bg-white">
                                     <option value="">Genre</option>
@@ -91,29 +92,14 @@
         <div class="container h-100">
             <div class="row justify-content-center h-100">
                 @auth
-                    <div class="col-2 me-4 sidebar">
-                        <ul class="nav nav-pills flex-column bg-light mt-5">
-                            <li class="nav-item">
-                                <a href="{{route('home')}}" class="nav-link {{ url()->current() === url('/') ? 'active bg-secondary' : 'text-dark'}}" aria-current="{{ url()->current() === url('/') ? 'page' : ''}}">
-                                    <i class="fa-solid fa-house me-2"></i> Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('book.index')}}" class="nav-link {{ url()->current() === url('/book') ? 'active bg-secondary' : 'text-dark'}}" aria-current="{{ url()->current() === url('/book') ? 'page' : ''}}">
-                                    <i class="fa-solid fa-book me-2"></i> Book List
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link {{ url()->current() === url('/profile') ? 'active bg-secondary' : 'text-dark'}}" aria-current="{{ url()->current() === url('/profile') ? 'page' : ''}}">
-                                    <i class="fa-regular fa-user me-2"></i> My Page
-                                </a>
-                            </li>
-                        </ul>
+                    {{-- Sidebar --}}
+                    <div class="col-2 me-4 sidebar bg-light">
+                        @yield('sidebar')
                     </div>
                 @endauth
                 
                 <div class="col-9">
-                    <main class="py-5">
+                    <main class="py-4">
                         <div class="container">
                             <div class="row justify-content-center">
                                 @yield('content')

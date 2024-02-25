@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Bookmark;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,7 @@ class BookController extends Controller
     private $book;
     private $genre;
 
-    public function __construct(Book $book, Genre $genre)
+    public function __construct(Book $book, Genre $genre, Bookmark $bookmark)
     {
         $this->book = $book;
         $this->genre = $genre;
@@ -21,7 +22,8 @@ class BookController extends Controller
     public function index() {
         $allBooks = $this->book->get();
 
-        return view('books.index')->with('allBooks', $allBooks);
+        return view('books.index')
+            ->with('allBooks', $allBooks);
     }
 
     public function create() {

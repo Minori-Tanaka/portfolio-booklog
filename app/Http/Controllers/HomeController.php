@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     private $book;
+    private $user;
 
-    public function __construct(Book $book)
+    public function __construct(Book $book, User $user)
     {
         $this->book = $book;
+        $this->user = $user;
     }
 
     /**
@@ -22,6 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $allBooks = $this->book->all();
-        return view('home')->with('allBooks', $allBooks);
+
+        return view('home')
+            ->with('allBooks', $allBooks);
     }
 }
