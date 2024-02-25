@@ -11,16 +11,20 @@ p {
     white-space: pre-wrap;
   }
 
+.table td {
+    background-color: white;
+}
+
 .btn-font {
     font-size: 2em;
 }
 
 .avatar-md {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 5rem;
+    height: 5rem;
     object-fit: cover;
 }
 
 .icon-md {
-    font-size: 4rem;
+    font-size: 5rem;
 }

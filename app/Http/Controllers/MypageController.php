@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MypageController extends Controller
 {
@@ -14,13 +15,10 @@ class MypageController extends Controller
         $this->user = $user;
     }
 
-    public function index($id) {
-        $user = $this->user->findOrFail($id);
+    public function index() {
+        $user = $this->user->findOrFail(Auth::user()->id);
 
-        return view('mypage.index')->with('user', $user);
-    }
-
-    public function bookmark() {
-        
+        return view('mypage.index')
+            ->with('user', $user);
     }
 }

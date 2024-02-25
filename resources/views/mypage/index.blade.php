@@ -11,7 +11,7 @@
 
     <ul class="nav nav-tabs mt-2">
         <li class="nav-item">
-            <a class="nav-link text-dark" href="{{route('bookmark.index')}}">
+            <a class="nav-link text-dark" href="{{route('bookmark.show')}}">
                 <i class="fa-regular fa-bookmark me-1"></i> Bookmark
             </a>
         </li>
@@ -22,11 +22,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">
-            <i class="fa-regular fa-user me-1"></i> Profile
-          </a>
         </li>
     </ul> 
 

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="card p-5">
+    <div class="card p-5 mt-5">
         <div class="row justify-content-start">
             <div class="col-lg-8">
                 <div class="card shadow rounded">
@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-2"></div>
                             <div class="col">
-                                <h2 class="h3 text-center">Add new Book</h2>
+                                <h2 class="h3 text-center mt-2">Add new Book</h2>
                             </div>
                             <div class="col-2 text-end">
                                 <a href="{{route('book.index')}}" class="btn">
@@ -32,7 +32,7 @@
                                     <th class="align-middle">
                                         <label for="title" class="form-label mb-0">Title</label>
                                     </th>
-                                    <td class="bg-white">
+                                    <td>
                                         <input type="text" class="form-control bg-white" name="title" id="title" value="{{old('title')}}" autofocus>
                                         @error('title')
                                             <p class="text-danger small">{{$message}}</p>
@@ -43,7 +43,7 @@
                                     <th class="align-middle">
                                         <label for="author" class="form-label mb-0">Author</label>
                                     </th>
-                                    <td class="bg-white">
+                                    <td>
                                         <input type="text" class="form-control bg-white" name="author" id="author" value="{{old('author')}}">
                                         @error('author')
                                             <p class="text-danger small">{{$message}}</p>
@@ -54,7 +54,7 @@
                                     <th class="align-middle">
                                         <label for="published_year" class="form-label mb-0">Published Year</label>
                                     </th>
-                                    <td class="bg-white">
+                                    <td>
                                         <input type="text" maxlength="4" class="form-control bg-white" name="published_year" id="published_year" value="{{old('published_year')}}" placeholder="YYYY">
                                         @error('published_year')
                                             <p class="text-danger small">{{$message}}</p>
@@ -65,7 +65,7 @@
                                     <th class="align-middle">
                                         <label for="cover_photo" class="form-label mb-0">Cover Photo</label>
                                     </th>
-                                    <td class="bg-white">
+                                    <td>
                                         <input type="file" class="form-control bg-white" name="cover_photo" id="cover_photo" value="{{old('cover_photo')}}" aria-describedby="cover-info">
                                         <div class="form-text" id="cover-info">
                                             Acceptable formats: jpeg, jpg, png, gif only <br>
@@ -80,7 +80,7 @@
                                     <th class="align-middle">
                                         <label for="genre_id" class="form-label mb-0">Genre</label>
                                     </th>
-                                    <td class="bg-white">
+                                    <td>
                                         <select class="form-select bg-white" name="genre_id" id="genre_id">
                                             <option selected>Select Genre</option>
                                             @foreach ($allGenres as $genre)
@@ -96,7 +96,7 @@
                                     <th class="align-middle">
                                         <label for="description" class="form-label mb-0">Description</label>
                                     </th>
-                                    <td class="bg-white">
+                                    <td>
                                         <textarea name="description" id="description" rows="5" class="form-control bg-white">{{old('description')}}</textarea>
                                         @error('description')
                                             <p class="text-danger small">{{$message}}</p>
