@@ -26,8 +26,8 @@ class BookmarkController extends Controller
         return redirect()->back();
     }
 
-    public function show() {
-        $user = $this->user->findOrFail(Auth::user()->id);
+    public function show($id) {
+        $user = $this->user->findOrFail($id);
 
         return view('mypage.contents.bookmark')
             ->with('user', $user);

@@ -19,7 +19,7 @@
                             </div>
                             <div class="col-2 text-end">
                                 <a href="{{route('mypage.index', Auth::user()->id)}}" class="btn">
-                                    <i class="fa-solid fa-xmark"></i>
+                                    <i class="fa-solid fa-xmark py-2" style="font-size: 1.2em"></i>
                                 </a>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                         <label for="introduction" class="form-label mb-0">Introduction</label>
                                     </th>
                                     <td>
-                                        <textarea name="introduction" id="introduction" rows="5" class="form-control bg-white" placeholder="Describe your favorite books etc...">{{old('introduction', $user->introduction)}}</textarea>
+                                        <textarea name="introduction" id="introduction" rows="5" class="form-control bg-white" placeholder="Describe your bookshelf">{{old('introduction', $user->introduction)}}</textarea>
                                         @error('introduction')
                                             <p class="text-danger small">{{$message}}</p>
                                         @enderror

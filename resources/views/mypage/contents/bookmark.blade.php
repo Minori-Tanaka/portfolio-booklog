@@ -11,7 +11,7 @@
 
     <ul class="nav nav-tabs mt-2">
         <li class="nav-item">
-            <a class="nav-link text-white bg-dark" href="{{route('bookmark.show')}}">
+            <a class="nav-link active text-white bg-dark" href="{{route('bookmark.show', $user->id)}}">
                 <i class="fa-regular fa-bookmark me-1"></i> Bookmark
             </a>
         </li>

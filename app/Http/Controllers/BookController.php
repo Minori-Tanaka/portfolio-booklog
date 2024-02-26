@@ -28,6 +28,7 @@ class BookController extends Controller
 
     public function create() {
         $allGenres = $this->genre->all();
+        
         return view('books.create')->with('allGenres', $allGenres);
     }
 

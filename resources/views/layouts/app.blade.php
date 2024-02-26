@@ -91,12 +91,10 @@
 
         <div class="container h-100">
             <div class="row justify-content-center h-100">
-                @auth
-                    {{-- Sidebar --}}
-                    <div class="col-2 me-4 sidebar bg-light">
-                        @yield('sidebar')
-                    </div>
-                @endauth
+                {{-- Sidebar --}}
+                <div class="col-2 me-4 sidebar bg-light">
+                    @yield('sidebar')
+                </div>
                 
                 <div class="col-9">
                     <main>

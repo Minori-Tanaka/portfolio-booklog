@@ -19,7 +19,7 @@
                             </div>
                             <div class="col-2 text-end">
                                 <a href="{{route('book.show', $book->id)}}" class="btn">
-                                    <i class="fa-solid fa-xmark"></i>
+                                    <i class="fa-solid fa-xmark py-2" style="font-size: 1.2em"></i>
                                 </a>
                             </div>
                         </div>

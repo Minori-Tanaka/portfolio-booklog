@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{route('mypage.index', Auth::user()->id)}}" class="nav-link active bg-secondary">
+        <a href="{{ Auth::check() ? route('mypage.index', Auth::user()->id) : route('login') }}" class="nav-link active bg-secondary">
             <i class="fa-solid fa-user me-2"></i> My Page
         </a>
     </li>                       
