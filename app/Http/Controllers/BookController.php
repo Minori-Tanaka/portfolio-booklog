@@ -20,7 +20,7 @@ class BookController extends Controller
     }
 
     public function index() {
-        $allBooks = $this->book->get();
+        $allBooks = $this->book->latest()->paginate(10);
 
         return view('books.index')
             ->with('allBooks', $allBooks);

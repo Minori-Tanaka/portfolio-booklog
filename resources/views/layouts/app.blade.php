@@ -112,7 +112,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('mypage.index')}}" class="nav-link {{request()->is('mypage') || request()->is('*/' . Auth::user()->id . '/*') ? 'active bg-secondary' : 'text-dark'}}">
+                                <a href="{{route('mypage.index')}}" class="nav-link {{request()->is('mypage') || (request()->is('*/' . Auth::user()->id . '/*') && !request()->is('book/*')) ? 'active bg-secondary' : 'text-dark'}}">
                                     <i class="fa-solid fa-user me-2"></i> My Page
                                 </a>
                             </li>                       

@@ -51,8 +51,8 @@
             </div>
         </div>
         {{--  Review --}}
+        <h3>Reviews</h3>
         @if ($book->reviews->isNotEmpty())
-            <h3>Reviews</h3>
             <div class="row justify-content-start">
                 <div class="col-8">
                     @foreach ($book->reviews as $review)
@@ -112,8 +112,6 @@
             </div>
         @else
             <h3 class="text-muted text-center py-5">No Reviews Yet</h3>
-        @endif
-        
-        
+        @endif       
     </div>
 @endsection
