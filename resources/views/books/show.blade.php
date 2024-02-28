@@ -2,10 +2,6 @@
 
 @section('title', $book->title)
 
-@section('sidebar')
-    @include('books.sidebar')
-@endsection
-
 @section('content')
     <div class="card p-5 mt-5">
         <div class="card bg-white shadow mb-5">
@@ -23,17 +19,14 @@
                         @endif
                     </div>
                     <div class="col">
-                        <div class="d-flex justify-content-between">
-                            <h3>{{$book->title}}</h3>
-                            
-                        </div>
+                        <h3>{{$book->title}}</h3>
                         {{-- TODO? : to author page --}}
                         <p class="text-muted fw-bold mb-2">by {{$book->author}}</p>
                         <p class="text-muted">Published in {{$book->published_year}}</p>
                         <div class="d-flex">
                             @if ($book->isBookmarked())
                                 {{-- TODO : if already bookmark -> check mark, review ditail --}}
-                                <a href="#" class="btn btn-secondary">
+                                <a href="{{route('review.show', ['book_id' => $book->id, 'user_id' => Auth::user()->id])}}" class="btn btn-secondary">
                                     <i class="fa-regular fa-circle-check me-1"></i> Saved
                                 </a>
                             @else
@@ -58,8 +51,64 @@
             </div>
         </div>
         {{-- TODO : Review --}}
-        <div class="card bg-white">
-            <h3>Reviews</h3>
+        <h3>Reviews</h3>
+        <div class="row justify-content-start">
+            <div class="col-8">
+                @foreach ($book->reviews as $review)
+                    <div class="card mb-4">
+                        <div class="card-header bg-white py-3">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <a href="{{route('bookmark.show', $review->user)}}">
+                                        @if ($review->user->avatar)
+                                            <img src="{{$review->user->avatar}}" alt="{{$review->user->name}}" class="rounded-circle avatar-sm">
+                                        @else
+                                            <i class="fa-solid fa-circle-user text-secondary icon-sm"></i>
+                                        @endif
+                                    </a>
+                                </div>
+                                <div class="col ps-0">
+                                    <a href="{{route('bookmark.show', $review->user)}}" class="text-decoration-none text-dark">{{$review->user->name}}</a>
+                                </div>
+                                <div class="col-auto">
+                                    @if (Auth::user()->id === $review->user->id)
+                                        {{-- TODO : to review ditails --}}
+                                        <a href="#" class="btn btn-link btn-sm text-dark">Details</a>
+                                    @else
+                                        @if ($review->user->isFollowed())
+                                            <form action="{{route('follow.destroy', $review->user->id)}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-secondary btn-sm fw-bold">Following</button>
+                                            </form>
+                                        @else
+                                            <form action="{{route('follow.store', $review->user->id)}}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary btn-sm fw-bold">Follow</button>
+                                            </form>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body bg-white px-4">
+                            <div class="row">
+                                <div class="col">
+                                    @if ($review->rating)
+                                        <span class="star5_rating mb-2" data-rate="{{$review->rating}}"></span>
+                                    @endif
+                                </div>
+                                <div class="col text-end">
+                                    <span class="text-muted small m-0">{{date('M d, Y', strtotime($review->created_at))}}</span>
+                                </div>
+                            </div>
+                            <p>{{$review->content}}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            
         </div>
+        
     </div>
 @endsection

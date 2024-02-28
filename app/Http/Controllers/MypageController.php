@@ -15,11 +15,11 @@ class MypageController extends Controller
         $this->user = $user;
     }
 
-    public function index($id) {
-        $user = $this->user->findOrFail($id);
+    public function index() {
+        $user = $this->user->findOrFail(Auth::user()->id);
 
         if(Auth::user()->id != $user->id) {
-            return redirect()->route('bookmark.show', $user->id);
+            return redirect()->route('mypage.bookmark.show', $user->id);
         }
 
         return view('mypage.index')

@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
 
     public function bookmarks() {
-        return $this->hasMany(Bookmark::class, 'user_id');
+        return $this->hasMany(Bookmark::class);
     }
 
     public function followers() {
@@ -62,5 +62,17 @@ class User extends Authenticatable
 
     public function isFollowed() {
         return $this->followers()->where('follower_id', Auth::user()->id)->exists();
+    }
+
+    public function categories() {
+        return $this->hasMany(Category::class);
+    }
+
+    public function categoryBook() {
+        return $this->hasMany(CategoryBook::class);
+    }
+
+    public function reviews() {
+        return $this->hasMany(Review::class);
     }
 }

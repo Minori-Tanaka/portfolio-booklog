@@ -2,45 +2,15 @@
 
 @section('title', 'Followers')
 
-@section('sidebar')
-    @include('mypage.sidebar')
-@endsection
-
 @section('content')
     @include('mypage.header')
-
-    <ul class="nav nav-tabs mt-2">
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{route('bookmark.show', $user->id)}}">
-                <i class="fa-regular fa-bookmark me-1"></i> Bookmark
-            </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" href="#">
-            <i class="fa-solid fa-square-poll-vertical me-1"></i> Reading Log
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" href="#">Link</a>
-        </li>
-    </ul> 
 
     <div class="card p-5">
         <div class="row justify-content-start">
             <div class="col-lg-8">
                 <div class="card shadow rounded">
                     <div class="card-header">
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col">
-                                <h2 class="h3 text-center mt-2">Followers</h2>
-                            </div>
-                            <div class="col-2 text-end">
-                                <a href="{{route('mypage.index', $user->id)}}" class="btn">
-                                    <i class="fa-solid fa-xmark py-2" style="font-size: 1.2em"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <h2 class="h3 text-center mt-2">Followers</h2>
                     </div>
                     <div class="card-body bg-white rounded-bottom">
                         @if ($user->followers->isNotEmpty())

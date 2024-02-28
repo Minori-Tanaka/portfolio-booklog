@@ -15,10 +15,10 @@ class ProfileController extends Controller
         $this->user = $user;
     }
 
-    public function edit() {
-        $user = $this->user->findOrFail(Auth::user()->id);
+    public function edit($id) {
+        $user = $this->user->findOrFail($id);
 
-        return view('mypage.contents.profile.edit')
+        return view('mypage.profile.edit')
             ->with('user', $user);
     }
 
@@ -48,12 +48,12 @@ class ProfileController extends Controller
     public function followers($id) {
         $user = $this->user->findOrFail($id);
 
-        return view('mypage.contents.profile.follower')->with('user', $user);
+        return view('mypage.profile.follower')->with('user', $user);
     }
 
     public function following($id) {
         $user = $this->user->findOrFail($id);
 
-        return view('mypage.contents.profile.following')->with('user', $user);
+        return view('mypage.profile.following')->with('user', $user);
     }
 }

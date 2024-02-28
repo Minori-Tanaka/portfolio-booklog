@@ -2,10 +2,6 @@
 
 @section('title', 'Book List')
 
-@section('sidebar')
-    @include('books.sidebar')
-@endsection
-
 @section('content')
     <a href="{{route('book.create')}}" class="btn text-start btn-font py-0 mt-2" title="Add book">
         <i class="fa-solid fa-circle-plus"></i>

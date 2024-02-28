@@ -20,11 +20,11 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body>
-    <div id="app" class="bg-white h-100">
+    <div id="app" class="h-100">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand pe-5" href="{{ url('/') }}" style="font-size: 1.5em">
-                    {{ config('app.name', 'Laravel') }}
+                    <i class="fa-solid fa-square-poll-vertical"></i> {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -91,12 +91,35 @@
 
         <div class="container h-100">
             <div class="row justify-content-center h-100">
-                {{-- Sidebar --}}
-                <div class="col-2 me-4 sidebar bg-light">
-                    @yield('sidebar')
-                </div>
-                
-                <div class="col-9">
+                @auth
+                    {{-- Sidebar --}}
+                    <div class="col-2 me-4 sidebar bg-white">
+                        <ul class="nav nav-pills flex-column mt-5">
+                            <li class="nav-item">
+                                <a href="{{route('home')}}" class="nav-link {{request()->is('/') ? 'active bg-secondary' : 'text-dark'}}">
+                                    <i class="fa-solid fa-house me-2"></i> Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('book.index')}}" class="nav-link {{request()->is('book/*') ? 'active bg-secondary' : 'text-dark'}}">
+                                    <i class="fa-solid fa-book me-2"></i> Book List
+                                </a>
+                            </li>
+                            {{-- TODO? : author page --}}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-dark">
+                                    <i class="fa-solid fa-pen-nib me-2"></i> Authors
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('mypage.index')}}" class="nav-link {{request()->is('mypage') || request()->is('*/' . Auth::user()->id . '/*') ? 'active bg-secondary' : 'text-dark'}}">
+                                    <i class="fa-solid fa-user me-2"></i> My Page
+                                </a>
+                            </li>                       
+                        </ul>
+                    </div>
+                @endauth
+                <div class="col-lg-9">
                     <main>
                         <div class="container">
                             <div class="row justify-content-center">

@@ -13,7 +13,7 @@
             </div>
             <div class="col-auto">
                 @if (Auth::user()->id === $user->id)
-                    <a href="{{route('profile.edit')}}" class="btn btn-outline-dark btn-sm fw-bold" title="Edit Profile">
+                    <a href="{{route('profile.edit', Auth::user()->id)}}" class="btn btn-outline-dark btn-sm fw-bold" title="Edit Profile">
                         <i class="fa-solid fa-user-pen"></i> Edit
                     </a>
                 @else
@@ -48,9 +48,9 @@
                 </div>
                 <div class="col">
                     <div class="text-center">
-                        {{-- TODO : review --}}
+                        {{-- TODO : show only books with reviews --}}
                         <a href="#" class="text-decoration-none text-dark">
-                            <strong>2</strong>
+                            <strong>{{$user->reviews->count()}}</strong>
                             <p class="m-0">{{$user->bookmarks->count() == 1 ? 'review' : 'reviews'}}</p>
                         </a>
                     </div>
@@ -76,3 +76,22 @@
     </div>
 </div>
 <hr>
+<ul class="nav nav-tabs mt-2">
+    <li class="nav-item">
+        <a class="nav-link {{request()->is('bookmark/*') ? 'active text-white bg-dark' : 'text-dark'}}" href="{{route('bookmark.show', $user->id)}}">
+            <i class="fa-regular fa-bookmark me-1"></i> Bookmarks
+        </a>
+    </li>
+    {{-- TODO : category page --}}
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="#"> 
+            Status
+        </a>
+    </li>
+    {{-- TODO : status page --}}
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="#">
+            Categories
+        </a>
+    </li>
+</ul> 

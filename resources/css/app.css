@@ -44,3 +44,129 @@ p {
     height: 220px;
     object-fit: cover;
 }
+
+.form-control, .form-select {
+  background-color: white;
+}
+
+/* entry stars */
+.stars span{
+    display: inline-flex;               /* 要素をフレックスボックスにする */
+    flex-direction: row-reverse; /* 星を逆順に並べる */
+    justify-content: flex-end;   /* 逆順なので、左寄せにする */
+  }
+  
+  .stars input[type='radio']{
+    display: none;               /* デフォルトのラジオボタンを非表示にする */
+  }
+  
+  .stars label{
+    color: #D2D2D2;              /* 未選択の星をグレー色に指定 */
+    font-size: 25px;             /* 星の大きさを30pxに指定 */
+    padding: 0 5px;              /* 左右の余白を5pxに指定 */
+    cursor: pointer;             /* カーソルが上に乗ったときに指の形にする */
+  }
+  
+  .stars label:hover,
+  .stars label:hover ~ label,
+  .stars input[type='radio']:checked ~ label{
+    color: #F8C601;              /* 選択された星以降をすべて黄色にする */
+  }
+
+  .star-rating {
+    position: relative;
+  }
+  
+  .star-rating::before,
+  .star-rating::after {
+    content: "★★★★★";
+    color: #e1e1e1;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .star-rating::after {
+    color: #ffb448;
+    overflow: hidden;
+  }
+  
+  /* show star */
+.star5_rating{
+	position: relative;
+	z-index: 0;
+	display: inline-block;
+	white-space: nowrap;
+	color: #CCCCCC;
+}
+
+.star5_rating_md{
+  font-size: 25px;
+}
+
+.star5_rating:before, .star5_rating:after{
+    content: '★★★★★';
+}
+
+.star5_rating:after{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffcf32;
+}
+
+.star5_rating[data-rate="5"]:after{ width: 100%; }
+.star5_rating[data-rate="4.9"]:after{ width: 98%; }
+.star5_rating[data-rate="4.8"]:after{ width: 96%; }
+.star5_rating[data-rate="4.7"]:after{ width: 94%; }
+.star5_rating[data-rate="4.6"]:after{ width: 92%; }
+.star5_rating[data-rate="4.5"]:after{ width: 90%; }
+.star5_rating[data-rate="4.4"]:after{ width: 88%; }
+.star5_rating[data-rate="4.3"]:after{ width: 86%; }
+.star5_rating[data-rate="4.2"]:after{ width: 84%; }
+.star5_rating[data-rate="4.1"]:after{ width: 82%; }
+.star5_rating[data-rate="4"]:after{ width: 80%; }
+.star5_rating[data-rate="3.9"]:after{ width: 78%; }
+.star5_rating[data-rate="3.8"]:after{ width: 76%; }
+.star5_rating[data-rate="3.7"]:after{ width: 74%; }
+.star5_rating[data-rate="3.6"]:after{ width: 72%; }
+.star5_rating[data-rate="3.5"]:after{ width: 70%; }
+.star5_rating[data-rate="3.4"]:after{ width: 68%; }
+.star5_rating[data-rate="3.3"]:after{ width: 66%; }
+.star5_rating[data-rate="3.2"]:after{ width: 64%; }
+.star5_rating[data-rate="3.1"]:after{ width: 62%; }
+.star5_rating[data-rate="3"]:after{ width: 60%; }
+.star5_rating[data-rate="2.9"]:after{ width: 58%; }
+.star5_rating[data-rate="2.8"]:after{ width: 56%; }
+.star5_rating[data-rate="2.7"]:after{ width: 54%; }
+.star5_rating[data-rate="2.6"]:after{ width: 52%; }
+.star5_rating[data-rate="2.5"]:after{ width: 50%; }
+.star5_rating[data-rate="2.4"]:after{ width: 48%; }
+.star5_rating[data-rate="2.3"]:after{ width: 46%; }
+.star5_rating[data-rate="2.2"]:after{ width: 44%; }
+.star5_rating[data-rate="2.1"]:after{ width: 42%; }
+.star5_rating[data-rate="2"]:after{ width: 40%; }
+.star5_rating[data-rate="1.9"]:after{ width: 38%; }
+.star5_rating[data-rate="1.8"]:after{ width: 36%; }
+.star5_rating[data-rate="1.7"]:after{ width: 34%; }
+.star5_rating[data-rate="1.6"]:after{ width: 32%; }
+.star5_rating[data-rate="1.5"]:after{ width: 30%; }
+.star5_rating[data-rate="1.4"]:after{ width: 28%; }
+.star5_rating[data-rate="1.3"]:after{ width: 26%; }
+.star5_rating[data-rate="1.2"]:after{ width: 24%; }
+.star5_rating[data-rate="1.1"]:after{ width: 22%; }
+.star5_rating[data-rate="1"]:after{ width: 20%; }
+.star5_rating[data-rate="0.9"]:after{ width: 18%; }
+.star5_rating[data-rate="0.8"]:after{ width: 16%; }
+.star5_rating[data-rate="0.7"]:after{ width: 14%; }
+.star5_rating[data-rate="0.6"]:after{ width: 12%; }
+.star5_rating[data-rate="0.5"]:after{ width: 10%; }
+.star5_rating[data-rate="0.4"]:after{ width: 8%; }
+.star5_rating[data-rate="0.3"]:after{ width: 6%; }
+.star5_rating[data-rate="0.2"]:after{ width: 4%; }
+.star5_rating[data-rate="0.1"]:after{ width: 2%; }
+.star5_rating[data-rate="0"]:after{ width: 0%; }
+  

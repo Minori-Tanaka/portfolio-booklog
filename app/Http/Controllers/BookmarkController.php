@@ -26,10 +26,10 @@ class BookmarkController extends Controller
         return redirect()->back();
     }
 
-    public function show($id) {
-        $user = $this->user->findOrFail($id);
+    public function show($user_id) {
+        $user = $this->user->findOrFail($user_id);
 
-        return view('mypage.contents.bookmark')
+        return view('mypage.bookmarks.show')
             ->with('user', $user);
     }
 }

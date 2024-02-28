@@ -25,4 +25,12 @@ class Book extends Model
     public function isBookmarked() {
         return $this->bookmarks()->where('user_id', Auth::user()->id)->exists();
     }
+
+    public function categoryBook() {
+        return $this->hasMany(CategoryBook::class);
+    }
+
+    public function reviews() {
+        return $this->hasMany(Review::class)->latest();
+    }
  }
