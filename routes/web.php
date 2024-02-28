@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function() {
     // BOOKMARK
     Route::post('/bookmark/{book_id}/store', [BookmarkController::class, 'store'])->name('bookmark.store');
     Route::get('/bookmark/{user_id}/show', [BookmarkController::class, 'show'])->name('bookmark.show');
+    Route::delete('/bookmark/{book_id}/destroy', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');
     // PROFILE
     Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');

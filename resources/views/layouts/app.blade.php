@@ -102,7 +102,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('book.index')}}" class="nav-link {{request()->is('book/*') ? 'active bg-secondary' : 'text-dark'}}">
-                                    <i class="fa-solid fa-book me-2"></i> Book List
+                                    <i class="fa-solid fa-book me-2"></i> Books
                                 </a>
                             </li>
                             {{-- TODO? : author page --}}

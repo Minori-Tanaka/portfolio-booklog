@@ -16,13 +16,15 @@
                         <div class="card-body pt-0 pe-0">
                             <div class="d-flex justify-content-end">
                                 {{-- TODO? : rating --}}
-                                {{-- @if ()
-                                    <span class="star5_rating" data-rate="#"></span>
+                                {{-- @if ($review->rating)
+                                    <span class="star5_rating mb-2" data-rate="{{$review->rating}}"></span>
                                 @endif --}}
-                                {{-- TODO : review, status --}}
-                                <button class="btn p-0">
-                                    <i class="fa-solid fa-bars"></i>
+
+                                {{-- TODO : bookmark delete --}}
+                                <button class="btn btn-danger btn-sm mt-1" title="Delete Bookmark" data-bs-toggle="modal" data-bs-target="#delete-bookmark-{{$bookmark->book->id}}">
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </button>
+                                @include('mypage.bookmarks.modal.delete')
                             </div>
                         </div>
                     </div>

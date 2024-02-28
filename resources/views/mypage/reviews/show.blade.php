@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="card-body bg-white rounded-bottom">
-                        <div class="row">
+                        <div class="row position-relative">
                             <div class="col-3 pe-3">
                                 @if ($book->cover_photo)
                                     <a href="{{route('book.show', $book->id)}}">
@@ -38,20 +38,20 @@
                                 <p class="text-muted">Published in {{$book->published_year}}</p>
                                 @if ($user->id === Auth::user()->id)
                                     @if ($review)
-                                        {{-- TODO : Edit --}}
-                                        <div class="d-flex justify-content-end">
+                                        {{-- Edit --}}
+                                        <div class="position-absolute bottom-0 end-0 me-3">
                                             <a href="{{route('review.edit', ['book_id' => $book->id, 'user_id' => Auth::user()->id])}}" class="btn btn-outline-dark me-2" title="Edit Review">
                                                 <i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                             </a>
-                                            {{-- TODO : Delete --}}
+                                            {{-- Delete --}}
                                             <button class="btn btn-danger" title="Delete Review" data-bs-toggle="modal" data-bs-target="#delete-review-{{$book->id}}">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </button>
                                         </div>
                                         @include('mypage.reviews.modal.delete')
                                     @else
-                                        <div class="d-flex justify-content-end">
-                                            <a href="{{route('review.create', $book->id)}}" class="btn btn-dark me-2" title="Create Review">
+                                        <div class="position-absolute bottom-0 end-0 me-3">
+                                            <a href="{{route('review.create', $book->id)}}" class="btn btn-dark" title="Create Review">
                                                 <i class="fa-solid fa-plus me-1"></i> Review
                                             </a>
                                         </div>

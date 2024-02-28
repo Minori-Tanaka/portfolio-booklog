@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $allBooks = $this->book->all();
+        $allBooks = $this->book->latest()->get();
 
         return view('home')
             ->with('allBooks', $allBooks);

@@ -4,9 +4,10 @@
 
 @section('content')
     <div class="card p-5 mt-5">
+        <h4>Recent Books</h4>
         @if ($allBooks->isNotEmpty())
             <div class="row justifi-content-center">
-                @foreach ($allBooks as $book)
+                @foreach ($allBooks->take(5) as $book)
                     <div class="card p-0 m-3" style="width: 146px">
                         <a href="{{route('book.show', $book->id)}}" class="position-relative">
                             <img src="{{$book->cover_photo}}" alt="{{$book->title}}" class="card-image-top shadow cover-md">

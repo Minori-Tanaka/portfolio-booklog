@@ -3,9 +3,11 @@
 @section('title', 'Book List')
 
 @section('content')
-    <a href="{{route('book.create')}}" class="btn text-start btn-font py-0 mt-2" title="Add book">
-        <i class="fa-solid fa-circle-plus"></i>
-    </a>
+    <div class="d-flex justify-content-end my-2">
+        <a href="{{route('book.create')}}" class="btn btn-dark" title="Add book">
+            <i class="fa-solid fa-circle-plus"></i> Add Book
+        </a>
+    </div>
     <div class="card p-5">
         @if ($allBooks->isNotEmpty())
             <div class="row justifi-content-center">
