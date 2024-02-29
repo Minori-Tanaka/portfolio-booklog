@@ -14,7 +14,7 @@
                                 <h2 class="h3 text-center mt-2">Review</h2>
                             </div>
                             <div class="col-auto text-end my-auto">
-                                <a href="{{route('bookmark.show', $user->id)}}" class="btn btn-close"></a>
+                                <button class="btn btn-close" onclick="history.back()"></button>
                             </div>
                         </div>
                     </div>
@@ -93,9 +93,28 @@
                                         </th>
                                         <td>
                                             {{-- TODO : to status page --}}
+                                            <div class="btn-group" role="group">
+                                                <input type="radio" name="status" id="unset" value="Unset" class="btn-check" {{ $review->status == 'Unset' ? 'checked' : '' }} disabled>
+                                                <label for="unset" class="btn btn-outline-dark">Unset</label>
+                                                <input type="radio" name="status" id="want" value="Want" class="btn-check" {{ $review->status == 'Want' ? 'checked' : '' }} disabled>
+                                                <label for="want" class="btn btn-outline-dark">Want</label>
+                                                <input type="radio" name="status" id="reading" value="Reading" class="btn-check" {{ $review->status == 'Reading' ? 'checked' : '' }} disabled>
+                                                <label for="reading" class="btn btn-outline-dark">Reading</label>
+                                                <input type="radio" name="status" id="finished" value="Finished" class="btn-check" {{ $review->status == 'Finished' ? 'checked' : '' }} disabled>
+                                                <label for="finished" class="btn btn-outline-dark">Finished</label>
+                                            </div>
+                                            {{-- <div class="btn-group" role="group">
+                                                <button name="status" id="unset" value="Unset" class="btn btn-outline-dark" {{ $review->status == 'Unset' ? 'checked' : '' }}>{{$review->status}}</button>
+                                                <input type="radio" name="status" id="want" value="Want" class="btn-check" {{ $review->status == 'Want' ? 'checked' : '' }}>
+                                                <label for="want" class="btn btn-outline-dark">Want</label>
+                                                <input type="radio" name="status" id="reading" value="Reading" class="btn-check" {{ $review->status == 'Reading' ? 'checked' : '' }}>
+                                                <label for="reading" class="btn btn-outline-dark">Reading</label>
+                                                <input type="radio" name="status" id="finished" value="Finished" class="btn-check" {{ $review->status == 'Finished' ? 'checked' : '' }}>
+                                                <label for="finished" class="btn btn-outline-dark">Finished</label>
+                                            </div>
                                             <a href="#" class="text-dark">
                                                 <p class="my-2">{{$review->status}}</p>
-                                            </a>
+                                            </a> --}}
                                         </td>
                                     </tr>
                                 @endif

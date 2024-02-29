@@ -19,7 +19,14 @@
                         @endif
                     </div>
                     <div class="col">
-                        <h3>{{$book->title}}</h3>
+                        <div class="row">
+                            <div class="col">
+                                <h3>{{$book->title}}</h3>
+                            </div>
+                            <div class="col text-end">
+                                <button class="btn btn-close" onclick="history.back()"></button>
+                            </div>
+                        </div>
                         {{-- TODO? : to author page --}}
                         <p class="text-muted fw-bold mb-2">by {{$book->author}}</p>
                         <p class="text-muted">Published in {{$book->published_year}}</p>

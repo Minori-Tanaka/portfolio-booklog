@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/review/{book_id}/{user_id}/edit', [ReviewController::class, 'edit'])->name('review.edit');
     Route::patch('/review/{book_id}/update', [ReviewController::class, 'update'])->name('review.update');
     Route::delete('/review/{book_id}/destroy', [ReviewController::class, 'destroy'])->name('review.destroy');
+    Route::get('/review/{book_id}/status', [ReviewController::class, 'status'])->name('review.status');
     // CATEGORY
     Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 });

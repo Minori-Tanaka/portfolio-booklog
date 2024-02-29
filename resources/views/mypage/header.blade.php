@@ -82,13 +82,13 @@
             <i class="fa-regular fa-bookmark me-1"></i> Bookmarks
         </a>
     </li>
-    {{-- TODO : category page --}}
+    {{-- TODO : status page --}}
     <li class="nav-item">
-        <a class="nav-link text-dark" href="#"> 
-            Status
+        <a class="nav-link {{request()->is('review/*/status') ? 'active text-white bg-dark' : 'text-dark'}}" href="{{route('review.status', $user->id)}}"> 
+            <i class="fa-solid fa-layer-group me-1"></i> Status
         </a>
     </li>
-    {{-- TODO : status page --}}
+    {{-- TODO : categories page --}}
     <li class="nav-item">
         <a class="nav-link text-dark" href="#">
             Categories

@@ -5,14 +5,14 @@
 @section('content')
     @include('mypage.header')
     
-    <div class="card px-4">
-        <h3 class="h4 mt-3 mb-0">Suggestions</h3>
-        <div class="card-body">
+    <div class="card px-5 pb-5">
+        <h3 class="h4 mt-3">Suggestions</h3>
+        <div class="card-body p-0">
             {{-- @if ($suggested_books) --}}
                 <div class="row">
                     @foreach ($suggested_books as $book)
                         <div class="card p-0 m-2" style="width: 90px">
-                            <a href="{{route('review.show', ['book_id' => $book->id, 'user_id' => $book->id])}}">
+                            <a href="{{route('book.show', $book->id)}}">
                                 <img src="{{$book->cover_photo}}" alt="{{$book->title}}" class="card-image-top shadow w-100">
                             </a>
                             <div class="card-body pt-0 pe-0">
