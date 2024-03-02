@@ -1,54 +1,59 @@
 html, body {
-    height: 100%;
+  height: 100%;
 }
 
 .card {
-    background-color: #e9ecef;
-    border: 0;
+  background-color: #e9ecef;
+  border: 0;
 }
 
 p {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
   }
 
+.footer {
+  position: absolute;
+  z-index: 2;
+}
+
 .table td {
-    background-color: white;
+  background-color: white;
 }
 
 .btn-font {
-    font-size: 2em;
+  font-size: 2em;
 }
 
 .avatar-md {
-    width: 5rem;
-    height: 5rem;
-    object-fit: cover;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
 }
 
 .icon-md {
-    font-size: 5rem;
+  font-size: 5rem;
 }
 
 .avatar-sm {
-    width: 2rem;
-    height: 2rem;
-    object-fit: cover;
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
 }
 
 .icon-sm {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .cover-md {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 
 .cover-sm {
-    width: 100%;
-    height: 136px;
-    object-fit: contain;
+  width: 100%;
+  height: 136px;
+  object-fit: cover;
 }
 
 .form-control, .form-select {

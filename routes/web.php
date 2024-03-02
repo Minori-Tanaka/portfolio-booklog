@@ -27,7 +27,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
-    // BOOK
+    // BOOKS
     Route::get('/book/index', [BookController::class, 'index'])->name('book.index');
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
     Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
@@ -35,12 +35,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/book/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
     Route::patch('/book/{id}/update', [BookController::class, 'update'])->name('book.update');
 
+    // AUTHORS
+    Route::get('author/index', [BookController::class, 'authors'])->name('author.index');
+
     // MY PAGE
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index');
     // BOOKMARK
     Route::post('/bookmark/{book_id}/store', [BookmarkController::class, 'store'])->name('bookmark.store');
     Route::get('/bookmark/{user_id}/show', [BookmarkController::class, 'show'])->name('bookmark.show');
     Route::delete('/bookmark/{book_id}/destroy', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');
+    Route::get('/bookmark/{user_id}/reviews', [BookmarkController::class, 'reviews'])->name('bookmark.reviews');
     // PROFILE
     Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
@@ -59,4 +63,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/review/{book_id}/status', [ReviewController::class, 'status'])->name('review.status');
     // CATEGORY
     Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/{user_id}/show', [CategoryController::class, 'show'])->name('category.show');
 });

@@ -21,9 +21,11 @@ class BookController extends Controller
 
     public function index() {
         $allBooks = $this->book->latest()->paginate(10);
+        $allGenres = $this->genre->all();
 
         return view('books.index')
-            ->with('allBooks', $allBooks);
+            ->with('allBooks', $allBooks)
+            ->with('allGenres', $allGenres);
     }
 
     public function create() {
@@ -99,5 +101,10 @@ class BookController extends Controller
         $book->save();
 
         return redirect()->route('book.show', $book->id);
+    }
+
+    // TODO: create authors controller
+    public function authors() {
+        return view('authors.index');
     }
 }

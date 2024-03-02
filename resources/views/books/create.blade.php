@@ -14,6 +14,7 @@
                                 <h2 class="h3 text-center mt-2">Add new Book</h2>
                             </div>
                             <div class="col-auto text-end my-auto">
+                                {{-- <a href="{{route('book.index')}}" class="btn btn-close"></a> --}}
                                 <button class="btn btn-close" onclick="history.back()"></button>
                             </div>
                         </div>

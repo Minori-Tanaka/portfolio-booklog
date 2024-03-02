@@ -36,7 +36,7 @@
         <p class="mb-0">{{$user->introduction}}</p>
     </div>
     <div class="col">
-        <div class="card w-75 p-2 ms-3 rounded-4 bg-light">
+        <div class="card w-75 p-2 ms-3 rounded-4 bg-white">
             <div class="row">
                 <div class="col pe-0">
                     <div class="text-center">
@@ -49,7 +49,7 @@
                 <div class="col">
                     <div class="text-center">
                         {{-- TODO : show only books with reviews --}}
-                        <a href="#" class="text-decoration-none text-dark">
+                        <a href="{{route('bookmark.reviews', $user->id)}}" class="text-decoration-none text-dark">
                             <strong>{{$user->reviews->count()}}</strong>
                             <p class="m-0">{{$user->bookmarks->count() == 1 ? 'review' : 'reviews'}}</p>
                         </a>
@@ -90,8 +90,8 @@
     </li>
     {{-- TODO : categories page --}}
     <li class="nav-item">
-        <a class="nav-link text-dark" href="#">
-            Categories
+        <a class="nav-link {{request()->is('category/*') ? 'active text-white bg-dark' : 'text-dark'}}" href="{{route('category.show', $user->id)}}">
+            <i class="fa-regular fa-folder me-1"></i> Categories
         </a>
     </li>
 </ul> 

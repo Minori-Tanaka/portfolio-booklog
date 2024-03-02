@@ -37,7 +37,7 @@
             <h3 class="text-muted text-center py-5">No Books Yet</h3>
         @endif        
     </div>
-    <div class="d-flex justify-content-center mt-3">
+    <div class="d-flex justify-content-center my-3">
         {{$allBooks->links()}}
     </div>
 @endsection

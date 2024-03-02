@@ -28,12 +28,26 @@ class MypageController extends Controller
             }
         }
 
-        return array_slice($suggested_books, 0, 8);
+        return array_slice($suggested_books, 0, 6);
+    }
+
+    private function getSuggestedUsers() {
+        $all_users = $this->user->all()->except(Auth::user()->id);
+        $suggested_users = [];
+
+        foreach($all_users as $user) {
+            if(!$user->isFollowed()) {
+                $suggested_users[] = $user;
+            }
+        }
+
+        return array_slice($suggested_users, 0, 10);
     }
 
     public function index() {
         $user = $this->user->findOrFail(Auth::user()->id);
         $suggested_books = $this->getSuggestedBooks();
+        $suggested_users = $this->getSuggestedUsers();
 
         if(Auth::user()->id != $user->id) {
             return redirect()->route('mypage.bookmark.show', $user->id);
@@ -41,6 +55,7 @@ class MypageController extends Controller
 
         return view('mypage.index')
             ->with('user', $user)
-            ->with('suggested_books', $suggested_books);
+            ->with('suggested_books', $suggested_books)
+            ->with('suggested_users', $suggested_users);
     }
 }

@@ -20,7 +20,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body>
-    <div id="app" class="h-100">
+    <div id="app" class="h-100 app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand pe-5" href="{{ url('/') }}" style="font-size: 1.5em">
@@ -35,18 +35,22 @@
                     <ul class="navbar-nav ms-auto">
                         @auth
                             {{-- TODO : Search (bootstrap > input group) --}}
-                            <div class="input-group">
-                                <select name="genre" id="genre" class="form-control rounded-pill shadow-sm border-0 me-1 bg-white">
-                                    <option value="">Genre</option>
-                                </select>
-                                <form action="#" method="post" role="search">
-                                    @csrf
-                                    <input type="text" name="search" class="form-control rounded-pill shadow-sm border-0 bg-white" placeholder="Search" style="width: 300px">
+                            @if (request()->is('book/index'))
+                                <form action="#" method="post">
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Genre</button>
+                                        <ul class="dropdown-menu">
+                                            @foreach ($allGenres as $genre)
+                                                <li><button type="button" class="dropdown-item">{{$genre->name}}</button></li>
+                                            @endforeach
+                                        </ul>
+                                        <input type="text" class="form-control">
+                                        <button type="submit" class="btn">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </button>
+                                    </div>
                                 </form>
-                                <button type="submit" class="btn">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </div>
+                            @endif
                         @endauth
                     </ul>
 
@@ -66,12 +70,24 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item my-auto">
+                                <a href="{{route('mypage.index')}}">
+                                    @if (Auth::user()->avatar)
+                                        <img src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}" class="rounded-circle avatar-sm"> 
+                                    @else
+                                        <i class="fa-solid fa-circle-user text-secondary icon-sm"></i>
+                                    @endif
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('mypage.index')}}">
+                                        <i class="fa-solid fa-user me-2"></i> My Page
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -107,7 +123,7 @@
                             </li>
                             {{-- TODO? : author page --}}
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-dark">
+                                <a href="{{route('author.index')}}" class="nav-link {{request()->is('author/*') ? 'active bg-secondary' : 'text-dark'}}">
                                     <i class="fa-solid fa-pen-nib me-2"></i> Authors
                                 </a>
                             </li>
@@ -120,7 +136,7 @@
                     </div>
                 @endauth
                 <div class="col-lg-9">
-                    <main>
+                    <main class="h-100">
                         <div class="container">
                             <div class="row justify-content-center">
                                 @yield('content')
@@ -131,5 +147,32 @@
             </div>  
         </div>             
     </div>
+    <footer class="footer container-fluid pt-5 p-0">
+        <div class="container-fluid bg-secondary stickey-bottom py-2">
+            <div class="container fw-light text-light">
+                <div class="row justify-content-center m-2">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <div class="col text-start position-relative">
+                                <small class="position-absolute bottom-0 start-0">&copy; 2024 Booklog by MINORI</small>
+                            </div>
+                            <div class="col text-end p-0">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <i class="fa-brands fa-twitter"></i>
+                                        <i class="fa-brands fa-instagram ms-2"></i>
+                                        <i class="fa-brands fa-facebook-f ms-2"></i>
+                                    </div>
+                                </div>
+                                <small>Hino-city, Tokyo, Japan</small>
+                                <br>
+                                <small>TEL : +81-90-9999-9999</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

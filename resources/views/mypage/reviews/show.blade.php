@@ -103,18 +103,6 @@
                                                 <input type="radio" name="status" id="finished" value="Finished" class="btn-check" {{ $review->status == 'Finished' ? 'checked' : '' }} disabled>
                                                 <label for="finished" class="btn btn-outline-dark">Finished</label>
                                             </div>
-                                            {{-- <div class="btn-group" role="group">
-                                                <button name="status" id="unset" value="Unset" class="btn btn-outline-dark" {{ $review->status == 'Unset' ? 'checked' : '' }}>{{$review->status}}</button>
-                                                <input type="radio" name="status" id="want" value="Want" class="btn-check" {{ $review->status == 'Want' ? 'checked' : '' }}>
-                                                <label for="want" class="btn btn-outline-dark">Want</label>
-                                                <input type="radio" name="status" id="reading" value="Reading" class="btn-check" {{ $review->status == 'Reading' ? 'checked' : '' }}>
-                                                <label for="reading" class="btn btn-outline-dark">Reading</label>
-                                                <input type="radio" name="status" id="finished" value="Finished" class="btn-check" {{ $review->status == 'Finished' ? 'checked' : '' }}>
-                                                <label for="finished" class="btn btn-outline-dark">Finished</label>
-                                            </div>
-                                            <a href="#" class="text-dark">
-                                                <p class="my-2">{{$review->status}}</p>
-                                            </a> --}}
                                         </td>
                                     </tr>
                                 @endif

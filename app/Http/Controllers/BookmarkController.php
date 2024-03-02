@@ -21,6 +21,11 @@ class BookmarkController extends Controller
         $this->review = $review;
     }
 
+    // TODO : 
+    private function getReviewBooks() {
+        $all_bookmarks = $this->bookmark->latest()->get();
+    }
+
     public function store($book_id) {
         $this->bookmark->user_id = Auth::user()->id;
         $this->bookmark->book_id = $book_id;
@@ -43,5 +48,12 @@ class BookmarkController extends Controller
             ->delete();
 
         return redirect()->back();
+    }
+
+    public function reviews($user_id) {
+        $user = $this->user->findOrFail($user_id);
+
+        return view('mypage.bookmarks.show')
+            ->with('user', $user);
     }
 }

@@ -14,7 +14,7 @@
                                 <h2 class="h3 text-center mt-2">Edit Review</h2>
                             </div>
                             <div class="col-auto text-end my-auto">
-                                <button class="btn btn-close" onclick="history.back()"></button>
+                                <a href="{{route('review.show', ['book_id' => $book->id, 'user_id' => $user->id])}}" class="btn btn-close"></a>
                             </div>
                         </div>
                     </div>
