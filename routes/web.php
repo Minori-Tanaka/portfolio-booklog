@@ -28,7 +28,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
     // BOOKS
-    Route::get('/book/index', [BookController::class, 'index'])->name('book.index');
+    Route::get('/book', [BookController::class, 'index'])->name('book.index');
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
     Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
     Route::get('/book/{id}/show', [BookController::class, 'show'])->name('book.show');
@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::patch('/book/{id}/update', [BookController::class, 'update'])->name('book.update');
 
     // AUTHORS
-    Route::get('author/index', [BookController::class, 'authors'])->name('author.index');
+    Route::get('author', [BookController::class, 'authors'])->name('author.index');
 
     // MY PAGE
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index');

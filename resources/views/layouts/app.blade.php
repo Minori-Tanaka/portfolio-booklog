@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand pe-5" href="{{ url('/') }}" style="font-size: 1.5em">
-                    <i class="fa-solid fa-square-poll-vertical"></i> {{ config('app.name', 'Laravel') }}
+                    <i class="fa-solid fa-square-poll-vertical"></i> {{ config('app.name', 'Booklog') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -117,13 +117,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('book.index')}}" class="nav-link {{request()->is('book/*') ? 'active bg-secondary' : 'text-dark'}}">
+                                <a href="{{route('book.index')}}" class="nav-link {{request()->is('book') || request()->is('book/*') ? 'active bg-secondary' : 'text-dark'}}">
                                     <i class="fa-solid fa-book me-2"></i> Books
                                 </a>
                             </li>
                             {{-- TODO? : author page --}}
                             <li class="nav-item">
-                                <a href="{{route('author.index')}}" class="nav-link {{request()->is('author/*') ? 'active bg-secondary' : 'text-dark'}}">
+                                <a href="{{route('author.index')}}" class="nav-link {{request()->is('author') ? 'active bg-secondary' : 'text-dark'}}">
                                     <i class="fa-solid fa-pen-nib me-2"></i> Authors
                                 </a>
                             </li>

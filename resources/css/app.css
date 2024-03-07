@@ -51,7 +51,8 @@ p {
 }
 
 .cover-sm {
-  width: 100%;
+  width: 5.4vw;
+  margin-right: 1vw;
   height: 136px;
   object-fit: cover;
 }

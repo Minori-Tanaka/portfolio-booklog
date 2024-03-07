@@ -24,55 +24,6 @@ class ReviewController extends Controller
         $this->category = $category;
     }
 
-    private function getFinishedBooks($user_id) {
-        $reviews_finished = $this->review->where('user_id', $user_id)->where('status', 'Finished')->get();
-        $finished_books = [];
-        foreach($reviews_finished as $review) {
-            $finished_books[] = $review->book()->first();
-        }
-
-        $finished_books = collect($finished_books)->reverse();
-
-        return $finished_books;
-    }
-
-    private function getReadingBooks($user_id) {
-        $reviews_reading = $this->review->where('user_id', $user_id)->where('status', 'Reading')->get();
-        $reading_books = [];
-        foreach($reviews_reading as $review) {
-            $reading_books[] = $review->book()->first();
-        }
-
-        $reading_books = collect($reading_books)->reverse();
-
-        return $reading_books;
-    }
-
-    private function getWantBooks($user_id) {
-        $reviews_want = $this->review->where('user_id', $user_id)->where('status', 'Want')->get();
-        $want_books = [];
-        foreach($reviews_want as $review) {
-            $want_books[] = $review->book()->first();
-        }
-
-        $want_books = collect($want_books)->reverse();
-
-        return $want_books;
-    }
-
-    private function getUnsetBooks($user_id) {
-        $reviews_unset = $this->review->where('user_id', $user_id)->where('status', 'Unset')->get();
-    
-        $unset_books = [];
-        foreach($reviews_unset as $review) {
-            $unset_books[] = $review->book()->first();
-        }
-
-        $unset_books = collect($unset_books)->reverse();
-
-        return $unset_books;   
-    }
-
     public function create($book_id) {
         $book = $this->book->findOrFail($book_id);
         $user = $this->user->findOrFail(Auth::user()->id);
@@ -194,17 +145,11 @@ class ReviewController extends Controller
 
     public function status($user_id) {
         $user = $this->user->findOrFail($user_id);
-        $finished_books = $this->getFinishedBooks($user_id);
-        $reading_books = $this->getReadingBooks($user_id);
-        $want_books = $this->getWantBooks($user_id);
-        $unset_books = $this->getUnsetBooks($user_id);
+        $reviewed_books = $user->reviews()->get();
 
         return view('mypage.reviews.status')
             ->with('user', $user)
-            ->with('finished_books', $finished_books)
-            ->with('reading_books', $reading_books)
-            ->with('want_books', $want_books)
-            ->with('unset_books', $unset_books);
+            ->with('reviewed_books', $reviewed_books);
     }
 }
 
